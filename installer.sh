@@ -47,7 +47,7 @@ read MAXCOUNT
 THREADS_MAX=`sysctl kernel.threads-max|awk '{print $3}'`
 MAXCOUNT_MIN=$(( MAXCOUNT-200 ))
 if (( MAXCOUNT_MIN > THREADS_MAX )); then
-    echo "kernel.threads-max = $THREADS_MAX этого недостаточно для указанного количества адресов!"
+    echo "kernel.threads-max = $THREADS_MAX this is not enough for the specified number of addresses!"
 fi
 
 echo "Enter login for proxy"
@@ -202,9 +202,9 @@ done
 
 if grep -q "net.ipv6.ip_nonlocal_bind=1" /etc/sysctl.conf;
 then
-   echo "Все параметры в sysctl уже были установлены"
+   echo "All parameters in sysctl have already been set"
 else
-   echo "Конфигурирование sysctl"
+   echo "Sysctl configuration"
    echo "net.ipv6.conf.eth0.proxy_ndp=1" >> /etc/sysctl.conf
    echo "net.ipv6.conf.all.proxy_ndp=1" >> /etc/sysctl.conf
    echo "net.ipv6.conf.default.forwarding=1" >> /etc/sysctl.conf
