@@ -96,7 +96,7 @@ fi
 
 echo "Kernel configuration"
 
-dpkg -l|grep linux-image|grep "\-4\."
+dpkg -l|grep linux-image|grep "\-5\."
 if [ $? -eq 0 ]
 then
     echo "Kernel 4.x installed, we continue with the configuration ..."
