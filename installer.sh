@@ -94,6 +94,18 @@ else
 fi
 
 
+echo "Kernel configuration"
+
+dpkg -l|grep linux-image|grep "\-4\."
+if [ $? -eq 0 ]
+then
+    echo "Kernel 4.x installed, we continue with the configuration ..."
+else
+    echo "Warning: kernel 4.x is not installed, proceeding with the installation ..."
+cd /tmp; wget https://blog.vpsville.ru/uploads/kernel-4.3/linux-headers-4.3.0-040300_4.3.0-040300.201511020949_all.deb; wget https://blog.vpsville.ru/uploads/kernel-4.3/linux-headers-4.3.0-040300-generic_4.3.0-040300.201511020949_amd64.deb; wget https://blog.vpsville.ru/uploads/kernel-4.3/linux-image-4.3.0-040300-generic_4.3.0-040300.201511020949_amd64.deb; dpkg -i *.deb;
+fi
+
+
 echo "Configuring ndppd"
 mkdir -p /root/ndppd/
 rm -f /root/ndppd/ndppd.conf
